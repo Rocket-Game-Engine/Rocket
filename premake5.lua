@@ -6,7 +6,7 @@ project "RocketEngine"
     language "C++"
     cppdialect "C++17"
     objdir "obj/%{cfg.buildcfg}"
-    targetdir "obj/%{cfg.buildcfg}"
+    targetdir "bin/%{cfg.buildcfg}"
 
 files {
     "src/**.cpp"
