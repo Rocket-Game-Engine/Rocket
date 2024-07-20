@@ -1,5 +1,4 @@
 #include <boost/test/unit_test.hpp>
-// #include <boost/test/execution_monitor.hpp>
 
 #include <ECS/Roc_ECS.hpp>
 
@@ -68,8 +67,20 @@ BOOST_FIXTURE_TEST_CASE( test_component_commands, ECS_Fixture )
     BOOST_TEST( fabs(g.gravity - 9.81) < EPSILON );
 
     // Does getting a component from an entity that doesn't exist fail?
-    BOOST_REQUIRE_THROW( c->GetComponent<Gravity>(c->GetEntity("test_entity2")),
-                         std::runtime_error );
+    BOOST_CHECK_THROW( c->GetComponent<Gravity>(c->GetEntity("test_entity2")),
+                       std::runtime_error );
+
+    // Does adding a component that doesn't exist (to any entity, real or not)
+    // result in a fail?
+    BOOST_CHECK_THROW( c->AddComponent<RectangleCollider>(c->GetEntity("test_ent"), RectangleCollider()),
+                       std::runtime_error );
+    BOOST_CHECK_THROW( c->AddComponent<RectangleCollider>(c->GetEntity("DNE"), RectangleCollider()),
+                       std::runtime_error );
+
+    // Does removing a component from an entity actually remove it?
+    BOOST_TEST( c->RemoveComponent<Gravity>(c->GetEntity("test_ent")) );
+    BOOST_CHECK_THROW( c->GetComponent<Gravity>(c->GetEntity("test_ent")),
+                       std::runtime_error );
 }
 
 

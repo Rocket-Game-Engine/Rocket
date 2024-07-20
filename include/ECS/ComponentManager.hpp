@@ -77,7 +77,7 @@ public:
 	{
 		// Add a component to the array for an entity
         std::shared_ptr<ComponentArray<T>> ptr = GetComponentArray<T>();
-        if (ptr == nullptr) return false;
+        if (ptr == nullptr) { throw std::runtime_error("Attempted to add to a nonexistent ComponentArray!"); }
 		return ptr->InsertData(entity, component);
 	}
 
@@ -210,7 +210,7 @@ public:
 	{
 		// Remove a component from the array for an entity
         std::shared_ptr<ComponentArray<T>> ptr = GetComponentArray<T>();
-        if (ptr == nullptr) return false;
+        if (ptr == nullptr) { throw std::runtime_error("Attempted to remove pointer from nonexistent ComponentArray!"); }
 		return ptr->RemoveData(entity);
 	}
 
