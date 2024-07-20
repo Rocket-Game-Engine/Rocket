@@ -2,4 +2,4 @@
 *.make
 Makefile
 obj/
-bin/
+build/

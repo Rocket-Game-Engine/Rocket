@@ -6,7 +6,7 @@ project "UnitTests"
     language "C++"
     cppdialect "C++17"
     objdir "obj/%{cfg.buildcfg}"
-    targetdir "bin/%{cfg.buildcfg}"
+    targetdir "build/%{cfg.buildcfg}"
 
 files {
     "tests/**.cpp",
@@ -38,7 +38,7 @@ linkoptions {
 }
 
 postbuildcommands {
-    "bin/%{cfg.buildcfg}/UnitTests --show_progress=true --report_level=detailed --report_memory_leaks_to=memory_leaks.txt"
+    "build/%{cfg.buildcfg}/UnitTests --show_progress=true --report_level=detailed --report_memory_leaks_to=memory_leaks.txt"
 }
 
 -----------------
@@ -48,7 +48,7 @@ project "RocketEngine"
     language "C++"
     cppdialect "C++17"
     objdir "obj/%{cfg.buildcfg}"
-    targetdir "bin/%{cfg.buildcfg}"
+    targetdir "build/%{cfg.buildcfg}"
 
 files {
     "src/**.cpp"
