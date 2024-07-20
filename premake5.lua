@@ -38,7 +38,7 @@ linkoptions {
 }
 
 postbuildcommands {
-    "build/%{cfg.buildcfg}/UnitTests --report_level=detailed --report_format=XML --report_sink=\"report-test-data.xml\""
+    "build/%{cfg.buildcfg}/UnitTests --report_level=detailed --log_format=JUNIT --log_sink=\"report-test-data.xml\""
 }
 
 -----------------
