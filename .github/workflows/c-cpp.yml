@@ -1,0 +1,31 @@
+name: Project Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Download Dependencies
+      run: |
+        sudo apt install build-essential libboost-dev libsdl2-dev libsdl2-image-dev libspdlog-dev
+    - name: Create Premake Makefile
+      run: ./generate-makefile-unix.sh
+    - name: Build and Run Unit Tests
+      run: make UnitTests
+    # report-test-data.xml
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: success() || failure()
+      with:
+        name: Unit Tests
+        path: report-test-data.xml
+        reporter: java-junit

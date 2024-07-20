@@ -38,7 +38,7 @@ linkoptions {
 }
 
 postbuildcommands {
-    "build/%{cfg.buildcfg}/UnitTests --show_progress=true --report_level=detailed --report_memory_leaks_to=memory_leaks.txt"
+    "build/%{cfg.buildcfg}/UnitTests --report_level=detailed --report_format=XML --report_sink=\"report-test-data.xml\""
 }
 
 -----------------
