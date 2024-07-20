@@ -9,7 +9,16 @@ project "UnitTests"
     targetdir "bin/%{cfg.buildcfg}"
 
 files {
-    "tests/**.cpp"
+    "tests/**.cpp",
+    "src/**.cpp"
+}
+
+includedirs {
+    "include"
+}
+
+removefiles {
+    "src/main.cpp"
 }
 
 defines {
@@ -18,6 +27,18 @@ defines {
 
 links {
     "boost_unit_test_framework"
+}
+
+buildoptions {
+    "`pkg-config spdlog --cflags`"
+}
+
+linkoptions {
+    "`pkg-config spdlog --libs`"
+}
+
+postbuildcommands {
+    "bin/%{cfg.buildcfg}/UnitTests --show_progress=true --report_level=detailed --report_memory_leaks_to=memory_leaks.txt"
 }
 
 -----------------
@@ -38,7 +59,11 @@ includedirs {
 }
 
 buildoptions {
-    "-Wall"
+    "-Wall", "`pkg-config spdlog --cflags`"
+}
+
+linkoptions {
+    "`pkg-config spdlog --libs`"
 }
 
 filter "configurations:Debug"
