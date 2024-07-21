@@ -12,7 +12,7 @@ In general, follow [these guidelines](http://isocpp.github.io/CppCoreGuidelines/
 - The `class` identifier is for classes, the `struct` identifier is for data.
 - Attributes should be prefixed with an underscore if they are `protected` or `private`.
 - Attributes are named with snake case.
-- Methods are named in camel-case, trying to explain the method's function as best as possible.
+- Methods are named in CamelCase, trying to explain the method's function as best as possible.
 - Method parameters are named like attributes, aka in snake case.
 - The order of definitions in a class go
   - Protected Methods
@@ -51,20 +51,20 @@ public:
 
 - Header files go under `include/`, and source files go under `src/`.
 - The filesystems under `include/` and `src/` should be roughly mirrored (aka `include/test.hpp` should have a matching `src/test.cpp` if applicable).
-- Files and directories will be written in all lowercase with no spaces.
+- Files and directories (except toplevel directories and `main.cpp`) will be written in CamelCase.
 - Header files have the `.hpp` extension, and source files have the `.cpp` extension.
 
 Example filesystem:
 ```
 | ./
 | include/
-| |--- otherdir/
-| |--- |--- other.hpp
-| |--- test.hpp
+| |--- OtherDir/
+| |--- |--- Other.hpp
+| |--- Test.hpp
 | src/
 | |--- main.cpp
-| |--- otherdir/
-| |--- |--- other.cpp
-| |--- test.cpp
+| |--- OtherDir/
+| |--- |--- Other.cpp
+| |--- Test.cpp
 | ...
 ```

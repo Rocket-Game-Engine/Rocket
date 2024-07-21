@@ -25,10 +25,10 @@ struct ECS_Fixture
 
 // LOGGER TESTS
 
-BOOST_AUTO_TEST_SUITE( ecs_tests )
+BOOST_AUTO_TEST_SUITE( ECS_Tests )
 
 // Sanity tests Entity-related features of the ECS
-BOOST_FIXTURE_TEST_CASE( test_entity_commands, ECS_Fixture )
+BOOST_FIXTURE_TEST_CASE( EntityCommands_Tests, ECS_Fixture )
 {
     // Do real entities show up with the correct values?
     Coordinator* c = Coordinator::Get();
@@ -56,7 +56,7 @@ BOOST_FIXTURE_TEST_CASE( test_entity_commands, ECS_Fixture )
 
 
 // Sanity tests Component-related features of the ECS
-BOOST_FIXTURE_TEST_CASE( test_component_commands, ECS_Fixture )
+BOOST_FIXTURE_TEST_CASE( ComponentCommands_Tests, ECS_Fixture )
 {
     // Sanity check, do all entities exist still?
     Coordinator* c = Coordinator::Get();
@@ -84,7 +84,7 @@ BOOST_FIXTURE_TEST_CASE( test_component_commands, ECS_Fixture )
                        std::runtime_error );
 }
 
-BOOST_FIXTURE_TEST_CASE( test_system_commands, ECS_Fixture )
+BOOST_FIXTURE_TEST_CASE( SystemCommands_Tests, ECS_Fixture )
 {
     // Sanity check, do all entities exist still?
     Coordinator* c = Coordinator::Get();
