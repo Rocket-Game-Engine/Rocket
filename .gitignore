@@ -3,3 +3,6 @@
 Makefile
 obj/
 build/
+
+# Log Files
+report-test-data.xml
