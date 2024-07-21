@@ -1,3 +1,6 @@
+# VSCode files
+.vscode/
+
 # Build Files
 *.make
 Makefile
