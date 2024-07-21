@@ -1,4 +1,4 @@
-name: Project Build and Test
+name: RocketGameEngine
 
 on:
   push:
