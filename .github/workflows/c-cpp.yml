@@ -24,7 +24,13 @@ jobs:
     - name: Create Premake Makefile
       run: ./generate-makefile-unix.sh
     - name: Build and Run Unit Tests
-      run: make UnitTests
+      run: |
+        make UnitTests
+        echo "# Test Logs" >> ${GITHUB_STEP_SUMMARY}
+        echo "" >> ${GITHUB_STEP_SUMMARY}
+        echo "```" >> ${GITHUB_STEP_SUMMARY}
+        cat tests/log.log >> ${GITHUB_STEP_SUMMARY}
+        echo "```" >> ${GITHUB_STEP_SUMMARY}
     # report-test-data.xml
     - name: Test Report
       uses: dorny/test-reporter@v1
