@@ -9,3 +9,4 @@ build/
 
 # Log Files
 report-test-data.xml
+tests/log.log

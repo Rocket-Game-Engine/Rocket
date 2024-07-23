@@ -5,7 +5,7 @@ project "UnitTests"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"
-    objdir "obj/%{cfg.buildcfg}"
+    objdir "obj/UnitTests/%{cfg.buildcfg}"
     targetdir "build/%{cfg.buildcfg}"
 
 files {
@@ -22,7 +22,7 @@ removefiles {
 }
 
 defines {
-    "BOOST_TEST_DYN_LINK"
+    "BOOST_TEST_DYN_LINK", "SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE"
 }
 
 links {
@@ -47,7 +47,7 @@ project "RocketEngine"
     kind "WindowedApp"
     language "C++"
     cppdialect "C++17"
-    objdir "obj/%{cfg.buildcfg}"
+    objdir "obj/Engine/%{cfg.buildcfg}"
     targetdir "build/%{cfg.buildcfg}"
 
 files {
@@ -68,7 +68,8 @@ linkoptions {
 
 filter "configurations:Debug"
     symbols "On"
-    defines { "ROCKET_DEBUG" }
+    defines { "ROCKET_DEBUG", "SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_INFO" }
 
 filter "configurations:Release"
     optimize "On"
+    defines { "SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_INFO"}

@@ -6,6 +6,7 @@ BOOST_AUTO_TEST_SUITE( Component_Tests )
 
 BOOST_AUTO_TEST_CASE( RectangleColliderComponent_Tests )
 {
+    SPDLOG_TRACE("Test RectangleCollider Properties Exist");
     // Ensure offset properties exist
     RectangleCollider rc;
     BOOST_CHECK_NO_THROW( rc.offsetX = 0.5 );
